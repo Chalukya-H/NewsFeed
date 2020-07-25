@@ -5,14 +5,14 @@ export const addNewsInfo = (newsinfo) =>{
     return {type: 'CREATE_NEWS' ,  payload:newsinfo}
 }
 
-export const getNewsinfoByID = (id , redirect) =>{
-    
+export const getNewsinfoByID = (id) =>{    
     return(dispatch) =>{
-        axios.get(`http://hn.algolia.com/api/v1/items/${id}`)
+        // axios.get(`http://hn.algolia.com/api/v1/items/${id}`)
+        axios.get(`http://hn.algolia.com/api/v1/search_by_date?tags=story`)
         .then(response =>{           
             
-            dispatch( addNewsInfo(response.data)) 
-            redirect()            
+            dispatch( addNewsInfo(response.data.hits)) 
+                         
         })
 
         .catch(err =>{
