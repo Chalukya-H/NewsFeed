@@ -2,13 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import {Provider} from 'react-redux'
+import configureStore from './store/configureStore'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+
+const store = configureStore()
+store.subscribe( () =>{
+  store.getState()
+})
  
-serviceWorker.unregister();
+
+const ele = (
+  <Provider store = {store}> 
+      <App/>
+  </Provider>
+)
+ReactDOM.render(  ele,  document.getElementById('root') );
+  
