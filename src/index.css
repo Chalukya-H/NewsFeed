@@ -13,13 +13,17 @@ code {
     monospace;
 }
 
+#pagination-col {
+  color: orange;
+  font-weight: bolder; 
+}
 #btn-next , #btn-previous {
-  color: orangered; 
+  color: orange; 
   font-weight: bold;
   background-color: ivory;
 }
  
-#btn-next[disabled] {
+#btn-next[disabled] ,#btn-previous[disabled]  {
   color: grey;
 }
 #btn-upvote{

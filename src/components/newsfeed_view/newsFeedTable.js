@@ -54,7 +54,7 @@ class NewsFeedTable extends React.Component {
         const value =  this.props.newslist.length/this.state.perpage - 1 === (  this.state.count ) ? true : false 
    
         return(
-            <div className ='container-fluid justify-text-center'>
+            <div className ='container-fluid'>
             {
                 this.props.newslist.length ?
                     <table  id = 'newsfeed-table'  className="table table-striped table-sm" >
@@ -93,31 +93,28 @@ class NewsFeedTable extends React.Component {
                     </table>
                 : <h4> No Data Found.....</h4>            
             } 
+            {/* pagination buttons like previous & next */}
             <div className = 'float-sm-right'>
                 <div className="row ">               
-                    <div className="col-lg">
+                    <div className="col-lg" id='pagination-col'>
                         <button name='previous' onClick = {this.handlepagination} id = 'btn-previous' className = 'btn btn-light  botton-previous'
-                                disabled = {this.state.count === 0? true : false}> Previous </button> |&nbsp;
+                                disabled = {this.state.count === 0? true : false}> Previous </button>|
                         <button name ='next' onClick = {this.handlepagination} id = 'btn-next' className = 'btn btn-light botton-next' 
                                 disabled = {value} > Next</button> 
                     </div>
                 </div>
             </div>
             <br/>
-           
-            <div>
+            {/* Line Chart which shows graph based on data displayed on current page */}
             <NewsFeedChart data = {data} />
-            </div>
-                
-           
-            
+             
         </div>
         
         )
     }
 }
 
-
+// Fetach Data from store and pass it to class using connect
 const mapStateToProps = (state) =>{     
     return{
         newslist : state.newslist
