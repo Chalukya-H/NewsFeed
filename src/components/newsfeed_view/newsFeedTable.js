@@ -49,6 +49,12 @@ class NewsFeedTable extends React.Component {
         
     }
 
+    handleHide = (id) =>{
+        localStorage.setItem(`${id}_hide`,true)
+        window.location.reload()
+        
+    }
+
     render(){ 
         const pageData = this.handlePageData()
         const data =[]   
@@ -70,25 +76,39 @@ class NewsFeedTable extends React.Component {
                         <tbody>
                             {
                                 pageData.map( (news,i) =>{
-                                    // Getting Domain name from URL
-                                    const {domain,topLevelDomains}  = parseDomain(fromUrl(news.url))
-                                    const topdomain = topLevelDomains ? topLevelDomains[0] : '' 
-                                    // Adding VotesCount to LocalStorage
-                                    localStorage.getItem(news.objectID) === null ? 
-                                            localStorage.setItem(news.objectID, news.points) : localStorage.getItem(news.objectID)                                      
-                                            data.push( [news.objectID, parseInt( localStorage.getItem(news.objectID) ) ] )   
-                                            
-                                    // Return the Row with needed details  
-                                    return(<tr key = {i+1}>                                         
-                                        <td id= 'newsfeed-data-comments'>{news.num_comments}</td>
-                                        <td id='newsfeed-data-votes' >{localStorage.getItem(news.objectID)}</td>
-                                        <td id = 'newsfeed-data-upvote'> < button className ='btn btn-link btn-sm' id='btn-upvote' onClick = { ()=>{ this.handleUpVote(news.objectID) }}>&#8710;</button></td>
-                                        <td id='newsfeed-data-details'>{news.title} 
-                                            {news.url ? <a href = {news.url} target ='blank'>  {`(${domain}.${topdomain})`}</a>
-                                        :'' } {`by ${news.author}`}    <Moment fromNow>{news.created_at}</Moment> {`[hide]`}
-                                        </td>
+                                    //Set the localstorage for hide option first
+                                    localStorage.getItem(`${news.objectID}_hide`) === null ? 
+                                        localStorage.setItem(`${news.objectID}_hide`,false)  : localStorage.getItem(`${news.objectID}_hide`)
+                                    
+                                       if(localStorage.getItem(`${news.objectID}_hide`) === 'false'){                                                 
+                                            // Getting Domain name from URL
+                                            const {domain,topLevelDomains}  = parseDomain(fromUrl(news.url))
+                                            const topdomain = topLevelDomains ? topLevelDomains[0] : '' 
+                                            // Adding VotesCount to LocalStorage
+                                            localStorage.getItem(news.objectID) === null ? 
+                                                    localStorage.setItem(news.objectID, news.points) : localStorage.getItem(news.objectID)                                      
+                                                    data.push( [news.objectID, parseInt( localStorage.getItem(news.objectID) ) ] )   
+                                            // Return the Row with needed details  
+                                            return(                                         
+                                                <tr key = {i+1}>                                         
+                                                    <td id= 'newsfeed-data-comments'>{news.num_comments}</td>
+                                                    <td id='newsfeed-data-votes' >{localStorage.getItem(news.objectID)}</td>
 
-                                    </tr>)
+                                                    <td id = 'newsfeed-data-upvote'> 
+                                                        < button className ='btn btn-link btn-sm' id='btn-upvote' 
+                                                            onClick = { ()=>{ this.handleUpVote(news.objectID) }}>&#8710;</button></td>
+
+                                                    <td id='newsfeed-data-details'>{news.title} 
+                                                        {news.url ? <a href = {news.url} target ='blank'>  {`(${domain}.${topdomain})`}</a>
+                                                    :'' } {`by ${news.author}`}    <Moment fromNow>{news.created_at}</Moment> 
+                                                         < button className ='btn btn-link btn-sm' id='btn-upvote' 
+                                                            onClick = { ()=>{ this.handleHide(news.objectID) }}>[hide]</button>
+                                                    </td>
+
+                                                </tr>
+                                            )
+                                       }
+                                        
                                 })
                             }
                         </tbody>
