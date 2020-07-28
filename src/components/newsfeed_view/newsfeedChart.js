@@ -45,7 +45,13 @@ import {connect} from 'react-redux'
                 fontSize :12 ,    
                 legend:'none',
                 baseline :0,
-                chartArea:{left:100, right: 20 ,top: 10 ,bottom:100}
+                chartArea:{
+                  left:100, right: 20 ,top: 10 ,bottom:100,
+                  backgroundColor: {
+                    stroke: 'black',
+                    strokeWidth: 1
+                }
+                }
                 
               }}
                

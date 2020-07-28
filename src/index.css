@@ -18,5 +18,25 @@ code {
   font-weight: bold;
   background-color: ivory;
 }
-
  
+#btn-next[disabled] {
+  color: grey;
+}
+#btn-upvote{
+  color: black;
+  font-weight: bold;
+}
+ 
+#newsfeed-table-header{
+  background-color: orange;
+  color: white;
+  font-size: 13px;
+}
+
+#newsfeed-comments , #newsfeed-votes, #newsfeed-upvote {
+  width: 3px; 
+}
+
+#newsfeed-data-comments , #newsfeed-data-votes, #newsfeed-data-upvote {
+  text-align: center;
+}

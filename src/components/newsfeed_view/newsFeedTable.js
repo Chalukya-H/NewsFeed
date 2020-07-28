@@ -57,31 +57,32 @@ class NewsFeedTable extends React.Component {
             <div className ='container-fluid justify-text-center'>
             {
                 this.props.newslist.length ?
-                    <table    className="table table-striped table-sm" >
-                        <thead>
-                            <tr className="bg-primary">
-                                <th>ID</th>
-                                <th>Comments</th>
-                                <th>Vote Count</th>
-                                <th>UpVote</th>
-                                <th>News Details</th>
+                    <table  id = 'newsfeed-table'  className="table table-striped table-sm" >
+                        <thead id ='newsfeed-table-header'>
+                            <tr>                                 
+                                <th id='newsfeed-comments'>Comments</th>
+                                <th id='newsfeed-votes' >Vote Count</th>
+                                <th id='newsfeed-upvote' >UpVote</th>
+                                <th id='newsfeed-details'>News Details</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 pageData.map( (news,i) =>{
+                                    // Getting Domain name from URL
                                     const {domain,topLevelDomains}  = parseDomain(fromUrl(news.url))
                                     const topdomain = topLevelDomains ? topLevelDomains[0] : '' 
-                                
+                                    // Adding VotesCount to LocalStorage
                                     localStorage.getItem(news.objectID) === null ? 
                                             localStorage.setItem(news.objectID, news.points) : localStorage.getItem(news.objectID)                                      
-                                            data.push( [news.objectID, parseInt( localStorage.getItem(news.objectID) ) ] )     
-                                    return(<tr key = {i+1}>
-                                        <td>{news.objectID}</td>
-                                        <td>{news.num_comments}</td>
-                                        <td>{localStorage.getItem(news.objectID)}</td>
-                                        <td> < button onClick = { ()=>{ this.handleUpVote(news.objectID) }}>&#8710;</button></td>
-                                        <td>{news.title} {news.url ? <a href = {news.url} target ='blank'>  {`(${domain}.${topdomain})`}</a>
+                                            data.push( [news.objectID, parseInt( localStorage.getItem(news.objectID) ) ] )   
+                                            
+                                    // Return the Row with needed details  
+                                    return(<tr key = {i+1}>                                         
+                                        <td id= 'newsfeed-data-comments'>{news.num_comments}</td>
+                                        <td id='newsfeed-data-votes' >{localStorage.getItem(news.objectID)}</td>
+                                        <td id = 'newsfeed-data-upvote'> < button className ='btn btn-link btn-sm' id='btn-upvote' onClick = { ()=>{ this.handleUpVote(news.objectID) }}>&#8710;</button></td>
+                                        <td id='newsfeed-data-details'>{news.title} {news.url ? <a href = {news.url} target ='blank'>  {`(${domain}.${topdomain})`}</a>
                                         :'' }</td>
 
                                     </tr>)
