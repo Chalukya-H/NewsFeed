@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {getNewsinfoByID} from '../../actions/newsaction' 
 import {parseDomain,fromUrl} from "parse-domain"
 import NewsFeedChart from './newsfeedChart' 
+import Moment from 'react-moment';
  
 class NewsFeedTable extends React.Component {
     constructor(){
@@ -14,7 +15,7 @@ class NewsFeedTable extends React.Component {
         }
     }
     componentDidMount = () =>{          
-        this.props.dispatch(getNewsinfoByID()) 
+        this.props.dispatch(getNewsinfoByID())  
     }
 
     handlePageData = () =>{
@@ -82,8 +83,10 @@ class NewsFeedTable extends React.Component {
                                         <td id= 'newsfeed-data-comments'>{news.num_comments}</td>
                                         <td id='newsfeed-data-votes' >{localStorage.getItem(news.objectID)}</td>
                                         <td id = 'newsfeed-data-upvote'> < button className ='btn btn-link btn-sm' id='btn-upvote' onClick = { ()=>{ this.handleUpVote(news.objectID) }}>&#8710;</button></td>
-                                        <td id='newsfeed-data-details'>{news.title} {news.url ? <a href = {news.url} target ='blank'>  {`(${domain}.${topdomain})`}</a>
-                                        :'' }</td>
+                                        <td id='newsfeed-data-details'>{news.title} 
+                                            {news.url ? <a href = {news.url} target ='blank'>  {`(${domain}.${topdomain})`}</a>
+                                        :'' } {`by ${news.author}`}    <Moment fromNow>{news.created_at}</Moment> {`[hide]`}
+                                        </td>
 
                                     </tr>)
                                 })
