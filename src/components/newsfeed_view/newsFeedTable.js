@@ -98,9 +98,11 @@ class NewsFeedTable extends React.Component {
                                                         < button className ='btn btn-link btn-sm' id='btn-upvote' 
                                                             onClick = { ()=>{ this.handleUpVote(news.objectID) }}>&#8710;</button></td>
 
-                                                    <td id='newsfeed-data-details'>{news.title} 
-                                                        {news.url ? <a href = {news.url} target ='blank'>  {`(${domain}.${topdomain})`}</a>
-                                                    :'' } {`by ${news.author}`}    <Moment fromNow>{news.created_at}</Moment> 
+                                                    <td id='newsfeed-data-details'>
+                                                        <a id = 'news-title' href = {news.url} target ='blank'> {news.title} </a> 
+                                                        {news.url ? <a id = 'news-domain' href = {news.url} target ='blank'>  {`(${domain}.${topdomain}) by`}</a> :'' }
+                                                        {` ${news.author} `}  
+                                                        <Moment fromNow id= 'news-createdtime'>{news.created_at}</Moment> 
                                                          < button className ='btn btn-link btn-sm' id='btn-upvote' 
                                                             onClick = { ()=>{ this.handleHide(news.objectID) }}>[hide]</button>
                                                     </td>

@@ -44,3 +44,17 @@ code {
 #newsfeed-data-comments , #newsfeed-data-votes, #newsfeed-data-upvote {
   text-align: center;
 }
+
+#news-title {
+  color: black;
+  font-size: 15px;
+}
+
+#news-domain , #news-createdtime , #btn-upvote{
+  color: grey;
+  font-size:13px ;
+}
+
+#newsfeed-data-details {
+  font-size: 13px;
+}
