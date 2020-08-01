@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/register": "^7.10.5",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -25,14 +28,13 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
   },
-  "scripts": {
-    "start": "react-scripts start",
+  "scripts": {    
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "heroku-prebuild": "npm install",
     "heroku-postbuild": "npm install && npm run build",
-    "ssr": "node server/index.js"
+    "start": "node server/index.js"
   },
   "engines": {
     "node": "^10.3.0",
