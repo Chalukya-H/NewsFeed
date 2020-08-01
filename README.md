@@ -21,6 +21,7 @@ Project is created with: Create-react-app
 
 ## Additional packages Used. 
 Additional packages used in this project.
+```
 * axios 
 * path
 * psl
@@ -30,6 +31,7 @@ Additional packages used in this project.
 * chart.js
 * react-google-charts* 
 
+```
 
 ## Setup
 To run this project, download the project and extract zip file:
