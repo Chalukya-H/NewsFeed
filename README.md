@@ -37,8 +37,8 @@ To run this project, download the project and extract zip file:
 ```
 $ go to project folder
 $ npm install -  to install dependent packages.
-$ npm ssr  - to run the project
-$ open the project in http://localhost:8000/
+$ npm start  - to run the project
+$ open the project in browser with URL - http://localhost:8000/
 ```
 
 ### Project heroku link
