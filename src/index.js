@@ -10,11 +10,10 @@ store.subscribe( () =>{
   store.getState()
 })
  
-
-const ele = (
-  <Provider store = {store}> 
-      <App/>
-  </Provider>
-)
-ReactDOM.render(  ele,  document.getElementById('root') );
+ 
+ReactDOM.hydrate( 
+   <Provider store = {store}> 
+        <App/>
+      </Provider>
+,  document.getElementById('root') );
   
