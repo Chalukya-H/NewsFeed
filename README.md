@@ -32,4 +32,4 @@ $ open the project in http://localhost:8000/
 
 ### Project Link
 
-You can access the project in the Link - [hackernewsfeed-info] (https://hackernewsfeed-info.herokuapp.com/)
+You can access the project in the Link - [hackernewsfeed-info](https://hackernewsfeed-info.herokuapp.com/)
