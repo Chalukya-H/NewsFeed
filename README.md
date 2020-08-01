@@ -12,16 +12,27 @@ Line chart also displayed with votes count info based on news data available on 
 	
 ## Technologies
 Project is created with: Create-react-app
+* Javascript
+* React-Redux
+* Bootstrap
+* CSS
 * node version: ^10.3.0
 * npm version: ^6.8.0 
 
 ## Additional packages Used. 
 Additional packages used in this project.
-* axios : to make api calls.
-* react-redux : 
+* axios 
+* path
+* psl
+* moment
+* parse-domain
+* express
+* chart.js
+* react-google-charts* 
+
 
 ## Setup
-To run this project, install it locally using npm:
+To run this project, download the project and extract zip file:
 
 ```
 $ go to project folder
@@ -30,6 +41,6 @@ $ npm ssr  - to run the project
 $ open the project in http://localhost:8000/
 ```
 
-### Project Link
+### Project heroku link
 
 You can access the project in the Link - [hackernewsfeed-info](https://hackernewsfeed-info.herokuapp.com/)
